@@ -1277,57 +1277,32 @@
         ]
     };
     
-    function showMockups(category) {
-        document.querySelectorAll('.category-button').forEach(btn => {
-            btn.classList.remove('active');
+    
+        
+      function showMockups(category) {
+    document.querySelectorAll('.category-button').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    document.getElementById(`btn-${category}`).classList.add('active');
+    
+    const currentData = mockupData[category];
+    
+    let galleryHTML = ``;
+    
+    if (currentData.length > 0) {
+        currentData.forEach(item => {
+            galleryHTML += `
+                <div class="mockup-image-box">
+                    <img src="${item.imagePath}" 
+                         alt="${item.name}"
+                         onerror="console.error('이미지 로드 실패: ${item.imagePath}'); this.parentElement.innerHTML='<span style=\\'color: #fce8a9;\\'>이미지를 찾을 수 없습니다<br>${item.name}</span>';">
+                </div>
+            `;
         });
-        document.getElementById(`btn-${category}`).classList.add('active');
-        
-        const currentData = mockupData[category];
-        const categoryName = getCategoryName(category);
-        
-        let galleryHTML = ``;
-        
-        function showMockups(category) {
-        document.querySelectorAll('.category-button').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        document.getElementById(`btn-${category}`).classList.add('active');
-        
-        const currentData = mockupData[category];
-        
-        let galleryHTML = ``;
-        
-       if (currentData.length > 0) {
-            currentData.forEach(item => {
-                let content;
-                // 이미지 경로가 '여기에_'로 시작하지 않으면 실제 이미지 사용
-                function showMockups(category) {
-        document.querySelectorAll('.category-button').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        document.getElementById(`btn-${category}`).classList.add('active');
-        
-        const currentData = mockupData[category];
-        
-        let galleryHTML = ``;
-        
-        if (currentData.length > 0) {
-            currentData.forEach(item => {
-                galleryHTML += `
-                    <div class="mockup-image-box">
-                        <img src="${item.imagePath}" alt="${item.name}">
-                    </div>
-                `;
-            });
-        }
-
-        galleryContainer.innerHTML = galleryHTML;
     }
 
-
-        galleryContainer.innerHTML = galleryHTML;
-    }
+    galleryContainer.innerHTML = galleryHTML;
+}
 
     function getCategoryName(category) {
         switch (category) {
