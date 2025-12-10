@@ -1,17 +1,9 @@
-<!--
-Created using JS Bin
-http://jsbin.com
 
-Copyright (c) 2025 by anonymous (http://jsbin.com/vicicicafe/4/edit)
-
-Released under the MIT license: http://jsbin.mit-license.org
--->
-<meta name="robots" content="noindex">
-자주 사용하는 앱에서 바로 AI를 사용해 보세요 … Gemini를 사용하여 초안을 생성하고 콘텐츠를 다듬고, Google의 차세대 AI가 지원되는 Gemini Pro를 이용하세요.
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="robots" content="noindex">
     <title>디지털 디자인 패턴 스튜디오</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,51 +31,44 @@ Released under the MIT license: http://jsbin.mit-license.org
             background-color: #F8F8F8;
             color: #f0e5d7;
             scroll-behavior: smooth; 
-            overflow-x: hidden; /* 가로 스크롤 방지 */
+            overflow-x: hidden;
         }
       
         #intro-page h2 { 
-    color: #fce8a9; 
-    font-size: 3.5em;  /* 크기 증가 */
-    margin-bottom: 30px; 
-    text-align: center;
-    font-family: 'SchoolSafetyWave', "Song Myung", serif;
-    font-weight: 700;
-} 
-      #canvas-container h3 { 
-    color: #fce8a9; 
-    font-size: 3.5em;  /* 크기 증가 */
-    margin-bottom: 30px; 
-    text-align: center;
-    font-family: 'SchoolSafetyWave', "Song Myung", serif;
-    font-weight: 700;
-} 
-      #mockup-page h2 { 
-    color: #fce8a9; 
-    font-size: 3.5em;  /* 크기 증가 */
-    margin-bottom: 30px; 
-    text-align: center;
-    font-family: 'SchoolSafetyWave', "Song Myung", serif;
-    font-weight: 700;
-} 
+            color: #fce8a9; 
+            font-size: 3.5em;
+            margin-bottom: 30px; 
+            text-align: center;
+            font-family: 'SchoolSafetyWave', "Song Myung", serif;
+            font-weight: 700;
+        } 
+        #canvas-container h3 { 
+            color: #fce8a9; 
+            font-size: 3.5em;
+            margin-bottom: 30px; 
+            text-align: center;
+            font-family: 'SchoolSafetyWave', "Song Myung", serif;
+            font-weight: 700;
+        } 
+        #mockup-page h2 { 
+            color: #fce8a9; 
+            font-size: 3.5em;
+            margin-bottom: 30px; 
+            text-align: center;
+            font-family: 'SchoolSafetyWave', "Song Myung", serif;
+            font-weight: 700;
+        } 
       
-      
-      
-        /* ----------------------------------- */
-        /* ✨ 눈 효과 캔버스 스타일 */
-        /* ----------------------------------- */
         #snowCanvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none; /* 마우스 클릭 무시 */
-            z-index: 99; /* 네비게이션바(100) 아래에 위치 */
+            pointer-events: none;
+            z-index: 99;
         }
 
-        /* ----------------------------------- */
-        /* 전체 섹션 스타일 */
         .page-section {
             min-height: 100vh;
             display: flex;
@@ -94,7 +79,6 @@ Released under the MIT license: http://jsbin.mit-license.org
             padding: 50px 0;
         }
 
-        /* 1. 타이틀 페이지 */
         #title-page {
             background-color: #6f1627;
             color: #f0e5d7;
@@ -107,7 +91,6 @@ Released under the MIT license: http://jsbin.mit-license.org
             margin-top: -50px;
         }
 
-        /* 네비게이션 스타일 (수정됨) */
         nav {
             position: fixed; 
             top: 0; 
@@ -121,7 +104,6 @@ Released under the MIT license: http://jsbin.mit-license.org
             align-items: center;
         }
         
-        /* 네비게이션 링크 컨테이너 스타일 */
         nav .nav-links {
             display: flex;
             padding: 0 60px; 
@@ -133,13 +115,10 @@ Released under the MIT license: http://jsbin.mit-license.org
             text-decoration: none;
         }
         
-        /* ✨ 눈 효과 토글 버튼 스타일 */
-        #snowToggle {
+        #snowToggle, #musicToggle {
             position: absolute; 
-            right: 20px; 
             top: 50%;
             transform: translateY(-50%);
-
             background-color: transparent; 
             border: 1px solid white; 
             border-radius: 4px;
@@ -150,13 +129,20 @@ Released under the MIT license: http://jsbin.mit-license.org
             transition: all 0.2s;
             line-height: 1.5; 
         }
-        #snowToggle:hover {
+        #snowToggle:hover, #musicToggle:hover {
             color: #fce8a9;
             border-color: #fce8a9;
             background-color: rgba(255, 255, 255, 0.1);
         }
+        
+        #musicToggle {
+            left: 20px;
+        }
+        
+        #snowToggle {
+            right: 20px;
+        }
 
-        /* 타이틀 원형 버튼 스타일 */
         .intro-link-circle {
             position: absolute;
             bottom: 5%; 
@@ -187,7 +173,6 @@ Released under the MIT license: http://jsbin.mit-license.org
             line-height: 1.4;
         }
 
-        /* 2. 프로젝트 소개 페이지 */
         #intro-page {
             background-color: #33583d;
             padding: 80px 20%;
@@ -204,7 +189,6 @@ Released under the MIT license: http://jsbin.mit-license.org
             height: 50%;
             margin-left: 3%;
         }
-        /* 새로 추가된 원형 버튼 스타일 (중앙 정렬 유지) */
         .intro-to-editor-circle {
             position: absolute; 
             bottom: 2%; 
@@ -235,7 +219,6 @@ Released under the MIT license: http://jsbin.mit-license.org
             line-height: 1.4;
         }
 
-        /* 콘텐츠 박스 스타일 */
         .content-box {
             background-color: #44684f;
             padding: 25px;
@@ -291,9 +274,6 @@ Released under the MIT license: http://jsbin.mit-license.org
             margin-top: 5px;
         }
 
-        /* ----------------------------------- */
-        /* 애니메이션 스타일 */
-        /* ----------------------------------- */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -312,10 +292,7 @@ Released under the MIT license: http://jsbin.mit-license.org
         .fade-up.in-view {
             animation: fadeInUp 0.8s ease-out forwards;
         }
-        /* ----------------------------------- */
 
-
-        /* 3. 패턴 제작 페이지 */
         #editor-page {
             background-color: #f0e5d7; 
             flex-direction: row; 
@@ -387,7 +364,6 @@ Released under the MIT license: http://jsbin.mit-license.org
             display: block; 
             margin-bottom: 5px; 
         }
-        /* ✨ 수정: select 태그도 포함하여 스타일 통일 */
         input[type="number"], input[type="color"], select {
             width: 90%;
             padding: 8px;
@@ -404,7 +380,6 @@ Released under the MIT license: http://jsbin.mit-license.org
             margin-top: 10px;
         }
         
-        /* '패턴 제작' 버튼 (미리보기) */
         .create-button {
             width: 100%;
             padding: 12px;
@@ -414,10 +389,11 @@ Released under the MIT license: http://jsbin.mit-license.org
             font-weight: bold;
             transition: background-color 0.2s;
             margin-top: 5px;
+            border: none;
+            cursor: pointer;
         }
         .create-button:hover { background-color: #24402b; }
         
-        /* '다운로드' 버튼 */
         .download-button {
             width: 100%;
             padding: 12px;
@@ -427,10 +403,11 @@ Released under the MIT license: http://jsbin.mit-license.org
             font-weight: bold;
             transition: background-color 0.2s;
             margin-top: 10px;
+            border: none;
+            cursor: pointer;
         }
         .download-button:hover { background-color: #f0d889; }
         
-        /* '목업 보러가기' 버튼 */
         .mockup-link-button {
             width: 100%;
             padding: 12px;
@@ -469,7 +446,6 @@ Released under the MIT license: http://jsbin.mit-license.org
             font-style: italic;
         }
         
-        /* 4. 목업 페이지 */
         #mockup-page {
             background-color: #44684f;
             color: #f0e5d7;
@@ -482,13 +458,11 @@ Released under the MIT license: http://jsbin.mit-license.org
             margin-bottom: 40px; 
         }
         
-        /* 카테고리 버튼 스타일 */
         .category-buttons {
             display: flex;
             justify-content: center;
             gap: 20px;
             margin-bottom: 50px;
-          
         }
         .category-button {
             padding: 15px 30px;
@@ -510,7 +484,6 @@ Released under the MIT license: http://jsbin.mit-license.org
             border: 3px solid #fce8a9;
         }
         
-        /* 이미지 갤러리 스타일 (4열) */
         #image-gallery {
             display: grid; 
             grid-template-columns: repeat(4, 1fr); 
@@ -524,7 +497,6 @@ Released under the MIT license: http://jsbin.mit-license.org
             border-radius: 10px;
         }
         
-        /* 목업 이미지 컨테이너 */
         .mockup-image-box {
             aspect-ratio: 1 / 1; 
             background-color: #557960; 
@@ -539,17 +511,15 @@ Released under the MIT license: http://jsbin.mit-license.org
             font-size: 1.1em;
             text-align: center;
             padding: 10px;
-            overflow: hidden; /* 이미지 오버플로우 방지 */
+            overflow: hidden;
         }
         
-        /* 목업 이미지 자체 스타일 */
         .mockup-image-box img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 이미지가 컨테이너를 가득 채우도록 */
+            object-fit: cover;
         }
         
-        /* 5. 푸터 스타일 */
         footer {
             background-color: #6f1627; 
             color: #f0e5d7;
@@ -571,26 +541,27 @@ Released under the MIT license: http://jsbin.mit-license.org
             text-decoration: underline;
         }
 
-        /* ----------------------------------- */
-        /* ✨ FIX: 재질/텍스처 설정 항목 기본 레이아웃 */
-        /* ----------------------------------- */
         #textureSettings {
             flex: 1 1 100%; 
             display: flex; 
             flex-wrap: wrap; 
             gap: 15px;
         }
-      /* Start https://www.cursors-4u.com */ * {cursor: url(https://cur.cursors-4u.net/holidays/hol-4/hol385.cur), auto !important;} /* End https://www.cursors-4u.com */
-
+        
+        * {cursor: url(https://cur.cursors-4u.net/holidays/hol-4/hol385.cur), auto !important;}
     </style>
 </head>
 <body>
     
     <canvas id="snowCanvas"></canvas>
-
+    
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
     <section id="title-page" class="page-section">
         <nav>
+            <button id="musicToggle" onclick="toggleMusic()">🎵 MUSIC ON</button>
             <div class="nav-links">
                 <a href="#title-page"> HOME</a>
                 <a href="#intro-page"> PROJECT</a>
@@ -763,7 +734,7 @@ Released under the MIT license: http://jsbin.mit-license.org
                 </div>
             </div>
         </div>
-
+        
         <div id="canvas-container">
             <h3>생성된 체크 패턴 미리보기</h3>
             <canvas id="patternCanvas" width="600" height="600"></canvas>
@@ -1327,6 +1298,20 @@ Released under the MIT license: http://jsbin.mit-license.org
         
         let galleryHTML = ``;
         
+       if (currentData.length > 0) {
+            currentData.forEach(item => {
+                let content;
+                // 이미지 경로가 '여기에_'로 시작하지 않으면 실제 이미지 사용
+                function showMockups(category) {
+        document.querySelectorAll('.category-button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.getElementById(`btn-${category}`).classList.add('active');
+        
+        const currentData = mockupData[category];
+        
+        let galleryHTML = ``;
+        
         if (currentData.length > 0) {
             currentData.forEach(item => {
                 galleryHTML += `
@@ -1339,13 +1324,7 @@ Released under the MIT license: http://jsbin.mit-license.org
 
         galleryContainer.innerHTML = galleryHTML;
     }
-                galleryHTML += `
-                    <div class="mockup-image-box">
-                        ${content}
-                    </div>
-                `;
-            });
-        }
+
 
         galleryContainer.innerHTML = galleryHTML;
     }
