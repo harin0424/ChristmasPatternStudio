@@ -1413,15 +1413,21 @@ Released under the MIT license: http://jsbin.mit-license.org
     }
 
     // 6. 초기 실행
-    window.onload = () => {
+   window.onload = () => {
     initializeControls();
     
     // 배경 음악 자동 재생
     const bgMusic = document.getElementById('bgMusic');
     if (bgMusic) {
-        bgMusic.volume = 0.3; // 볼륨 조절 (0.0 ~ 1.0)
+        bgMusic.volume = 0.3; // 볼륨 30%
+        
+        // 페이지 로드 시 자동 재생 시도
         bgMusic.play().catch(err => {
-            console.log('자동 재생 실패:', err);
+            console.log('자동 재생 차단됨');
+            // 사용자가 페이지 클릭하면 재생
+            document.body.addEventListener('click', () => {
+                bgMusic.play();
+            }, { once: true });
         });
     }
 };
