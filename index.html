@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -734,8 +733,7 @@
                 </div>
             </div>
         </div>
-        
-        <div id="canvas-container">
+<div id="canvas-container">
             <h3>생성된 체크 패턴 미리보기</h3>
             <canvas id="patternCanvas" width="600" height="600"></canvas>
             <p id="instructionText">
@@ -1277,32 +1275,38 @@
         ]
     };
     
-    
-        
-      function showMockups(category) {
-    document.querySelectorAll('.category-button').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    document.getElementById(`btn-${category}`).classList.add('active');
-    
-    const currentData = mockupData[category];
-    
-    let galleryHTML = ``;
-    
-    if (currentData.length > 0) {
-        currentData.forEach(item => {
-            galleryHTML += `
-                <div class="mockup-image-box">
-                    <img src="${item.imagePath}" 
-                         alt="${item.name}"
-                         onerror="console.error('이미지 로드 실패: ${item.imagePath}'); this.parentElement.innerHTML='<span style=\\'color: #fce8a9;\\'>이미지를 찾을 수 없습니다<br>${item.name}</span>';">
-                </div>
-            `;
+    function showMockups(category) {
+        document.querySelectorAll('.category-button').forEach(btn => {
+            btn.classList.remove('active');
         });
-    }
+        document.getElementById(`btn-${category}`).classList.add('active');
+        
+        const currentData = mockupData[category];
+        const categoryName = getCategoryName(category);
+        
+        let galleryHTML = ``;
+        
+        if (currentData.length > 0) {
+            currentData.forEach(item => {
+                let content;
+                // 이미지 경로가 '여기에_'로 시작하지 않으면 실제 이미지 사용
+                if (!item.imagePath.startsWith('여기에_')) {
+                    content = `<img src="${item.imagePath}" alt="${item.name}">`;
+                } else {
+                    // 이미지 경로가 지정되지 않았을 경우 안내 문구 표시
+                    content = ``;
+                }
 
-    galleryContainer.innerHTML = galleryHTML;
-}
+                galleryHTML += `
+                    <div class="mockup-image-box">
+                        ${content}
+                    </div>
+                `;
+            });
+        }
+
+        galleryContainer.innerHTML = galleryHTML;
+    }
 
     function getCategoryName(category) {
         switch (category) {
