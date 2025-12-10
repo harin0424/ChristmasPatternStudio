@@ -1317,17 +1317,28 @@ Released under the MIT license: http://jsbin.mit-license.org
         
         let galleryHTML = ``;
         
+        function showMockups(category) {
+        document.querySelectorAll('.category-button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.getElementById(`btn-${category}`).classList.add('active');
+        
+        const currentData = mockupData[category];
+        
+        let galleryHTML = ``;
+        
         if (currentData.length > 0) {
             currentData.forEach(item => {
-                let content;
-                // 이미지 경로가 '여기에_'로 시작하지 않으면 실제 이미지 사용
-                if (!item.imagePath.startsWith('여기에_')) {
-                    content = `<img src="${item.imagePath}" alt="${item.name}">`;
-                } else {
-                    // 이미지 경로가 지정되지 않았을 경우 안내 문구 표시
-                    content = ``;
-                }
+                galleryHTML += `
+                    <div class="mockup-image-box">
+                        <img src="${item.imagePath}" alt="${item.name}">
+                    </div>
+                `;
+            });
+        }
 
+        galleryContainer.innerHTML = galleryHTML;
+    }
                 galleryHTML += `
                     <div class="mockup-image-box">
                         ${content}
