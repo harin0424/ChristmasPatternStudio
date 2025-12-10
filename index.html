@@ -585,6 +585,10 @@ Released under the MIT license: http://jsbin.mit-license.org
     </style>
 </head>
 <body>
+    <!-- 배경 음악 -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
     
     <canvas id="snowCanvas"></canvas>
 
@@ -1288,21 +1292,21 @@ Released under the MIT license: http://jsbin.mit-license.org
     const mockupData = {
         scarf: [
             { id: 1, name: '목도리 A', imagePath: 'imges/목도리1.jpg' },
-            { id: 2, name: '목도리 B', imagePath: 'imges/목도리2.jpg' },
-            { id: 3, name: '목도리 C', imagePath: 'imges/목도리3.jpg' },
-            { id: 4, name: '목도리 D', imagePath: 'imges/목도리4.jpg' }
+            { id: 2, name: '목도리 B', imagePath: 'imges/목도리2.jpg' },
+            { id: 3, name: '목도리 C', imagePath: 'imges/목도리3.jpg' },
+            { id: 4, name: '목도리 D', imagePath: 'imges/목도리4.jpg' }
         ],
         glove: [
-            { id: 1, name: '장갑 A', imagePath: 'imges/장갑1.jpg' },
-            { id: 2, name: '장갑 B', imagePath: 'imges/장갑2.jpg' },
-            { id: 3, name: '장갑 C', imagePath: 'imges/장갑3.jpg' },
-            { id: 4, name: '장갑 D', imagePath: 'imges/장갑4.jpg' } 
+            { id: 1, name: '장갑 A', imagePath: 'imges/장갑1.jpg' },
+            { id: 2, name: '장갑 B', imagePath: 'imges/장갑2.jpg' },
+            { id: 3, name: '장갑 C', imagePath: 'imges/장갑3.jpg' },
+            { id: 4, name: '장갑 D', imagePath: 'imges/장갑4.jpg' } 
         ],
         bowl: [
-            { id: 1, name: '그릇 A', imagePath: 'https://github.com/harin0424/ChristmasPatternStudio/blob/main/imges/%EA%B7%B8%EB%A6%871.jpg' },
-            { id: 2, name: '그릇 B', imagePath: 'imges/그릇2.jpg' },
-            { id: 3, name: '그릇 C', imagePath: 'imges/그릇3.jpg' }, 
-            { id: 4, name: '그릇 D', imagePath: 'imges/그릇4.jpg' } 
+            { id: 1, name: '그릇 A', imagePath: 'imges/그릇1.jpg' },
+            { id: 2, name: '그릇 B', imagePath: 'imges/그릇2.jpg' },
+            { id: 3, name: '그릇 C', imagePath: 'imges/그릇3.jpg' }, 
+            { id: 4, name: '그릇 D', imagePath: 'imges/그릇4.jpg' } 
         ]
     };
     
@@ -1410,9 +1414,17 @@ Released under the MIT license: http://jsbin.mit-license.org
 
     // 6. 초기 실행
     window.onload = () => {
-        initializeControls(); 
-    };
-
+    initializeControls();
+    
+    // 배경 음악 자동 재생
+    const bgMusic = document.getElementById('bgMusic');
+    if (bgMusic) {
+        bgMusic.volume = 0.3; // 볼륨 조절 (0.0 ~ 1.0)
+        bgMusic.play().catch(err => {
+            console.log('자동 재생 실패:', err);
+        });
+    }
+};
 </script>
 </body>
 </html>
